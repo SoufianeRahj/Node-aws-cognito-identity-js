@@ -1,20 +1,20 @@
-# Node-Express-starterPack
-Basic Express application on Node with error handling middleware and utility class
+The interaction with Cognito user pool is done here using the amazon-cognito-identity-js library. 
 
-This application includes squeleton for CRUD operation on a resource and its subresource.
-The data is not persisted anyware, the route handlers only returns an empty response with the right status code (depending on the http verb).
-This squeleton also includes a global error handling middleware and an Error utility class.
+The following endpoints are exposed by the express app for unauthenticated users: 
 
-The logging in the application is done via morgan in dev environment only for the moment.
+- POST host/signup: signup using email and password data
+- POST host/login: login using email and password
+- POST host/forgotPassword: this action sends an email with a verification code
+- PATCH host/resetPassword: reset a password based on a verification code
 
-The security of the application is managed through the following libs: 
-- helmet: security http headers
-- hpp: prevent query parameter pollution
-- xss-clean: data sanitization against xss attacks
-- express-rate-limit: for rate limiting directly on the express application
+The following endpoints are exposed for authenticated users:
 
-To run the application, first install all the dependencies throught: 
-- npm intall
+- PATCH /updateMyPassword: to update the password
+- GET /getMe: to retrieve the logged in user attributes in the Cognito User Pool
+- PATCH /updateMe: to update the attributes of the logged in user
+- DELETE /deleteMe: to delete the logged in user
 
-then run the start script:
-- npm run start
+The following middlewares are also defined: 
+- protect: to verify the id token based on the cognito-express library
+- refreshToken: to refresh the token of the authenticated user
+
