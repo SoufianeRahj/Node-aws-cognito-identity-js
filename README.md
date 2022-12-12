@@ -1,4 +1,6 @@
-The interaction with Cognito user pool is done here using the amazon-cognito-identity-js library. 
+This is a Node/Express application that uses AWS Cognito User Pool as a user directory
+
+The interaction with Cognito is achieved using the amazon-cognito-identity-js library. 
 
 The following endpoints are exposed by the express app for unauthenticated users: 
 
