@@ -20,3 +20,5 @@ The following middlewares are also defined:
 - protect: to verify the id token based on the cognito-express library
 - refreshToken: to refresh the token of the authenticated user
 
+Usecase for the application:
+- Adding a Backend Layer for all interactions with Cognito User pool (user directory) instead of making all calls directly from the frontend web/mobile that uses the AWS SDK.
